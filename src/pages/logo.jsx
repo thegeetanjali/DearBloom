@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom"
-import bouquetImg from "../flowers/bouquet.png"
 import "../styles/fonts.css"
 import "../styles/buttons.css"
 
@@ -8,7 +7,7 @@ export default function Logo() {
 
   return (
     <div style={container}>
-      <img src={bouquetImg} alt="Flower Bouquet" style={flowerIcon} />
+      <img src="/bouquet.png" alt="Flower Bouquet" style={flowerIcon} />
       
       <h1 style={title}>DearBloom</h1>
       

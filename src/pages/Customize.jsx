@@ -2,7 +2,6 @@ import { useLocation, useNavigate } from "react-router-dom"
 import { useState } from "react"
 import "../styles/buttons.css"
 import "../styles/fonts.css"
-import { ImItalic } from "react-icons/im"
 
 export default function Customize() {
   const { state } = useLocation()
