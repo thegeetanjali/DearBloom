@@ -1,28 +1,24 @@
-import { useState } from "react"
-import { useLocation, useNavigate } from "react-router-dom"
+import { useParams } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import "../styles/fonts.css"
 import "../styles/buttons.css"
 
-export default function Final() {
-  const { state } = useLocation()
+export default function Share() {
+  const { code } = useParams()
   const navigate = useNavigate()
-  const [copied, setCopied] = useState(false)
 
-  const generateShareLink = () => {
-    const data = {
-      flowers: state?.flowers || [],
-      note: state?.note || "",
-      arrangement: state?.arrangement || "circle",
-      greenery: state?.greenery || 1
-    }
-    const encoded = btoa(JSON.stringify(data))
-    return `${window.location.origin}/DearBloom/#/share/${encoded}`
-  }
-
-  const copyLink = () => {
-    navigator.clipboard.writeText(generateShareLink())
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2000)
+  let data
+  try {
+    data = JSON.parse(atob(code))
+  } catch {
+    return (
+      <div style={container}>
+        <h1 style={title}>Invalid Bouquet Link</h1>
+        <button onClick={() => navigate("/")} style={btn}>
+          CREATE YOUR OWN
+        </button>
+      </div>
+    )
   }
 
   const getArrangementStyle = () => {
@@ -43,26 +39,22 @@ export default function Final() {
 
       <div style={bouquetSection}>
         <div style={previewContainer}>
-          <img src={`/DearBloom/greenery/${state?.greenery || 1}green.png`} alt="greenery" style={greeneryImg} />
+          <img src={`/DearBloom/greenery/${data.greenery || 1}green.png`} alt="greenery" style={greeneryImg} />
           <div style={{ ...bouquetContainer, ...getArrangementStyle() }}>
-            {state?.flowers?.map((flower) => (
-              <img key={flower.uniqueId} src={flower.image} alt={flower.name} style={flowerImg} />
+            {data.flowers?.map((flower, index) => (
+              <img key={index} src={flower.image} alt={flower.name} style={flowerImg} />
             ))}
           </div>
         </div>
 
         <div style={noteCard}>
-          <p style={noteText}>{state?.note || "No message"}</p>
+          <p style={noteText}>{data.note || "No message"}</p>
           <p style={signature}>Sincerely,</p>
         </div>
       </div>
 
-      <button onClick={copyLink} style={copyBtn}>
-        {copied ? "LINK COPIED! ✓" : "COPY LINK TO SHARE"}
-      </button>
-
-      <button onClick={() => navigate("/")} style={newBouquetBtn}>
-        TRY NEW BOUQUET
+      <button onClick={() => navigate("/")} style={btn}>
+        CREATE YOUR OWN BOUQUET
       </button>
 
       <p style={footer}>
@@ -156,23 +148,11 @@ const signature = {
   margin: "0"
 }
 
-const copyBtn = {
+const btn = {
   padding: "15px 40px",
   background: "#000",
   color: "#fff",
   border: "none",
-  fontSize: "14px",
-  letterSpacing: "2px",
-  cursor: "pointer",
-  fontFamily: "'Pantalone', sans-serif",
-  marginBottom: "15px"
-}
-
-const newBouquetBtn = {
-  padding: "15px 30px",
-  background: "transparent",
-  color: "#f07575ff",
-  border: "2px solid #000",
   fontSize: "14px",
   letterSpacing: "2px",
   cursor: "pointer",

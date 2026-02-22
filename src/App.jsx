@@ -4,6 +4,7 @@ import Note from "./pages/Note"
 import Builder from "./pages/Builder"
 import Customize from "./pages/Customize"
 import Final from "./pages/Final"
+import Share from "./pages/Share"
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
       <Route path="/build" element={<Builder />} />
       <Route path="/customize" element={<Customize />} />
       <Route path="/final" element={<Final />} />
+      <Route path="/share/:code" element={<Share />} />
     </Routes>
   )
 }
