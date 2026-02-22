@@ -7,7 +7,7 @@ export default function Logo() {
 
   return (
     <div style={container}>
-      <img src="/bouquet.png" alt="Flower Bouquet" style={flowerIcon} />
+      <img src="/DearBloom/bouquet.png" alt="Flower Bouquet" style={flowerIcon} />
       
       <h1 style={title}>DearBloom</h1>
       

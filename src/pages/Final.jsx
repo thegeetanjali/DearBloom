@@ -43,7 +43,7 @@ export default function Final() {
 
       <div style={bouquetSection}>
         <div style={previewContainer}>
-          <img src={`/greenery/${state?.greenery || 1}green.png`} alt="greenery" style={greeneryImg} />
+          <img src={`/DearBloom/greenery/${state?.greenery || 1}green.png`} alt="greenery" style={greeneryImg} />
           <div style={{ ...bouquetContainer, ...getArrangementStyle() }}>
             {state?.flowers?.map((flower) => (
               <img key={flower.uniqueId} src={flower.image} alt={flower.name} style={flowerImg} />

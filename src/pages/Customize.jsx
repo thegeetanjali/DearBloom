@@ -74,7 +74,7 @@ export default function Customize() {
       </div>
 
       <div style={previewContainer}>
-        <img src={`/greenery/${greenery}green.png`} alt="greenery" style={greeneryImg} />
+        <img src={`/DearBloom/greenery/${greenery}green.png`} alt="greenery" style={greeneryImg} />
         <div style={{ ...bouquetContainer, ...getArrangementStyle() }}>
           {state.selected.map((flower) => (
             <img key={flower.uniqueId} src={flower.image} alt={flower.name} style={flowerImg} />
