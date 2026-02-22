@@ -1,0 +1,13 @@
+@font-face {
+  font-family: 'Floraison';
+  src: url('/floraison.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Pantalone';
+  src: url('/pantalone.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}

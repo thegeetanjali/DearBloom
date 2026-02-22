@@ -1,0 +1,14 @@
+button {
+  font-family: 'Pantalone', sans-serif;
+  transition: all 0.3s ease;
+}
+
+button:hover:not(:disabled) {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
